@@ -22,7 +22,7 @@ def rotation_error(pose_error):
     b = pose_error[1,1]
     c = pose_error[2,2]
     d = 0.5*(a+b+c-1)
-    rot_error = np.arccos(np.sqrt(max(min(d,1.0),-1.0)))
+    rot_error = np.arccos(max(min(d,1.0),-1.0))
     return rot_error
 
 def translation_error(pose_error):
