@@ -90,7 +90,7 @@ def calculate_ave_errors(errors):
 
         rot_errors.append(sum(rot_error_each_length)/len(rot_error_each_length))
         tra_errors.append(sum(tra_error_each_length)/len(tra_error_each_length))
-    return rot_errors,tra_errors
+    return np.array(rot_errors)*180/np.pi,tra_errors
 def  main():
     # usage: python main.py path_to_ground_truth path_to_predict_pose
     # load and preprocess data
@@ -98,7 +98,7 @@ def  main():
     predict_pose__data = np.loadtxt(sys.argv[2])
     errors = calculate_sequence_error(ground_truth_data,predict_pose__data)
     rot,tra = calculate_ave_errors(errors)
-    print(rot,tra)
+    print(rot,'\n',tra)
     #print(error)
     # evaluate the vo result
     # save and visualization the evaluatation result
